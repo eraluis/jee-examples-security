@@ -1,0 +1,10 @@
+<libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
+<nombre idioma="es">Rayuela</nombre>
+<autor>
+   <nombre>Julio</nombre>
+   <apellido>Cortazar</apellido>
+</autor>
+<extentiones>	
+	<ext:nota tipo="comentario">No leer en orden</ext:nota>
+</extentiones>
+</libro>

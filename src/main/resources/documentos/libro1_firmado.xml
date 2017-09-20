@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	Id="xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb">
+	<ds:SignedInfo>
+		<ds:CanonicalizationMethod
+			Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+		<ds:SignatureMethod
+			Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+		<ds:Reference Id="xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-ref0"
+			Type="http://www.w3.org/2000/09/xmldsig#Object" URI="#xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-object0">
+			<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+			<ds:DigestValue>8J0x9aloawPz6pTHby0svhVt8RsZPsLYYPJmhUGRuoU=</ds:DigestValue>
+		</ds:Reference>
+		<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties"
+			URI="#xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-signedprops">
+			<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+			<ds:DigestValue>VJFEMV/Oud21Xy3yTCzAnnarGqkmIwQqLexn8R60wEI=</ds:DigestValue>
+		</ds:Reference>
+	</ds:SignedInfo>
+	<ds:SignatureValue
+		Id="xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-sigvalue">CvFZzyGS8SXNLZJObO00AuhBBHS95jb6DZ9oD+D8u2Wc5e9sYYwAKjHBBl/WS4p5x8FFHFmuFMKTOMjrawt2BXTHGMrIgyZXCF2A37mfszlmHS8pb+g3fZ2j5OmTrNdLMZmFRYJAN5fLELNUV1+NSKUH61tdTvFjWidEeJQMhSA=</ds:SignatureValue>
+	<ds:KeyInfo>
+		<ds:X509Data>
+			<ds:X509Certificate>MIIB+zCCAWSgAwIBAgIGAVM33N/1MA0GCSqGSIb3DQEBBQUAMEExCzAJBgNVBAYTAlNFMSAwHgYDVQQHDBdfU2lnblNlcnZlcl9EVU1NWV9DRVJUXzEQMA4GA1UEAxMHdGVzdEtleTAeFw0xNjAzMDIxNTA1MzVaFw00NjAyMjMxNTE1MzVaMEExCzAJBgNVBAYTAlNFMSAwHgYDVQQHDBdfU2lnblNlcnZlcl9EVU1NWV9DRVJUXzEQMA4GA1UEAxMHdGVzdEtleTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAoiVg0x3Q0+hoBwm3h4bxW4UJzaXB4gUgfZFXcGvGNGo3SGg5ydlKTN1XNi/jWxnzo0Wh80F380tII/l4s3WyLz+J8N0G9JWPksCPxmx2xyQcM/1HuRXQxrvRLSSwSv9Ls8/GYVG8/shvb2F+vx3WWptX6oHE/MayB7HhOxsyCCMCAwEAATANBgkqhkiG9w0BAQUFAAOBgQCWd4I2SCnSHccYtMvJ2/FI1g0cXeOOIdpmZZf+ZtfVeGL3lv2mUqEL4/JCDkpZIXR+Rpv2feUPEJOVPzzoOdddXFRykavBqbjvqxF98V7BG1fBznnPSTqEOBkOkMC2lurLCMmtx5KKjX29bvk4ZetazUwW9KbnMw0wH/Q2TsC5JA==</ds:X509Certificate>
+		</ds:X509Data>
+	</ds:KeyInfo>
+	<ds:Object Id="xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-object0">
+		<libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
+			<nombre idioma="es">Rayuela</nombre>
+			<autor>
+				<nombre>Julio</nombre>
+				<apellido>Cortazar</apellido>
+			</autor>
+			<extentiones>
+				<ext:nota tipo="comentario">No leer en orden</ext:nota>
+			</extentiones>
+		</libro>
+	</ds:Object>
+	<ds:Object>
+		<xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+			xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#" Target="#xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb">
+			<xades:SignedProperties
+				Id="xmldsig-649ed5fd-c726-42c0-99c5-a22937bddcdb-signedprops">
+				<xades:SignedSignatureProperties>
+					<xades:SigningTime>2017-09-19T15:39:10.024-05:00
+					</xades:SigningTime>
+					<xades:SigningCertificate>
+						<xades:Cert>
+							<xades:CertDigest>
+								<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+								<ds:DigestValue>ngga8EtRf8XPsX14zEqTBHta5WNxt6u3Np184eDHS1w=</ds:DigestValue>
+							</xades:CertDigest>
+							<xades:IssuerSerial>
+								<ds:X509IssuerName>CN=testKey,L=_SignServer_DUMMY_CERT_,C=SE</ds:X509IssuerName>
+								<ds:X509SerialNumber>1456931135477</ds:X509SerialNumber>
+							</xades:IssuerSerial>
+						</xades:Cert>
+					</xades:SigningCertificate>
+				</xades:SignedSignatureProperties>
+			</xades:SignedProperties>
+		</xades:QualifyingProperties>
+	</ds:Object>
+</ds:Signature>
