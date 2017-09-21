@@ -38,7 +38,8 @@ import org.w3c.dom.Document;
 // http://camel.apache.org/xml-security-component.html
 // https://github.com/apache/camel/blob/master/components/camel-xmlsecurity/src/test/java/org/apache/camel/component/xmlsecurity/XAdESSignaturePropertiesTest.java
 // http://www.facturae.gob.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf
-
+// http://www.etsi.org/deliver/etsi_ts%5C101900_101999%5C101903%5C01.04.02_60%5Cts_101903v010402p.pdf
+// http://geminisecurity.com/wp-content/uploads/tools/xades-overview.pdf
 public class CertificadoX509 {
 	
 	//private static final String RUTA_CERTIFICADO ="src/main/resources/certificados/x509/x509-personal.crt";
@@ -145,19 +146,16 @@ public class CertificadoX509 {
 	            	(SignatureMethod.RSA_SHA1 , null),
 	            Collections.singletonList(reference)
 	    	);
-	    
-	    	    	    
+	    	    	    	   
 	    KeyInfoFactory keyInfoFactory = signatureFactory.getKeyInfoFactory();
         KeyValue keyValue = keyInfoFactory.newKeyValue( x509.getPublicKey() );
         KeyInfo keyInfo = keyInfoFactory.newKeyInfo(Collections.singletonList(keyValue));
-	    
-        
+	            
 	    // Crear contexto de firma	    
         DocumentBuilderFactory documentBuilder = DocumentBuilderFactory.newInstance();
         documentBuilder.setNamespaceAware(true);
         Document xmlDocument = documentBuilder.newDocumentBuilder().parse(new FileInputStream( DOCUMENTO_XML ));
-	    		  
-        
+	    		          
         DOMSignContext domSingContext = new DOMSignContext
         		(privateKey, xmlDocument.getDocumentElement() );
         
