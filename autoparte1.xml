@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><order amount="1" customer="honda" name="motor"><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>/v7XbjZo6OTU11Dqsm855be1DWc=</DigestValue></Reference></SignedInfo><SignatureValue>PKvZiDlBu9mZaA0fVwMS5pHyIvUb6zQ5ArE07wfHlQEEnR76R7xSvFotxeSUcJqyFxWplvWcGXxU
+96mSewIrKBvJwHuMXz2uVCRp+Itc70cjqv1eb6ksXo76UuMO2qZiofDoYfXWYJ7j+A6cYvqZX6jd
+a1c0+FwXYMd9obiEIvmsJoselu2ETU/2decM93ZEkf7Uy8HSPIkjkroYTnCIERaOnEIAkMez/edn
+oX/+0XNwo6n1F+du/eZAklKFmCrjTB0W5BKMC+DFUfm2PJHxbJtL91Rw+dTcsJae9WNy17dbVPIY
+AziT4+DY7Z2dbpAoZYGWQ8RvGJ7lAq6vZqSpBA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>nvqj5+/ckOOa9rkkgzJ+LHDRswncJjoC6Q1fDaiPeseQd/JZ2GvcO8O3lV+Q2b4UZtw0B7pFx22H
+PXoIVbWpGeDCo7FSA3O++QWxsD+gVXuCk1F6+qhf8ABLhkdzBHttas7hGqBZhM2Vw1h/aPV0Baup
+x6NTmC1EK0O4xysszatKRz5KuafHG8OYl3BtwkZwK+wyHic4ywvbx6AOSJxefpUyOnA9Y5Fye2j6
+8SuISpnLWYyPy5zGu6vCK7sZwXnIuuMbuV9SlTiIhceBAKsGaPtmkCUEBzs2z5iY/BLZrmfv+LpB
+i2KoBKOPX+t5Ezo8FRkkHAeHovol2Qq7miVfIw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue></KeyInfo></Signature></order>

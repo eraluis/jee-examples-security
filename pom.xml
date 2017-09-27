@@ -6,6 +6,45 @@
   <packaging>war</packaging>
   <name>jee-examples-security</name>
   
+  <properties>
+    <camel-version>2.19.3</camel-version>
+    <slf4j-version>1.7.5</slf4j-version>
+    <log4j-version>1.2.17</log4j-version>
+    
+  </properties>
+  
+  <dependencies>
+  	
+  	<dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-core</artifactId>
+        <version>${camel-version}</version>
+	</dependency>
+
+  	<dependency>
+	    <groupId>org.apache.camel</groupId>
+	    <artifactId>camel-xmlsecurity</artifactId>
+	    <version>${camel-version}</version>
+	</dependency>
+	
+    <!-- logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency> 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId> 
+      <artifactId>log4j</artifactId> 
+      <version>1.2.16</version> 
+    </dependency>
+  </dependencies>
+  
    <build>
         <plugins>
             <plugin>

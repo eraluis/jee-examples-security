@@ -1,5 +1,6 @@
-package certificados;
+package camel;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -32,37 +33,22 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.w3c.dom.Document;
 
-// https://stackoverflow.com/questions/40965378/is-there-a-good-example-out-there-for-xml-sign-with-xades-epes-in-java
-// http://camel.apache.org/xml-security-component.html
-// https://github.com/apache/camel/blob/master/components/camel-xmlsecurity/src/test/java/org/apache/camel/component/xmlsecurity/XAdESSignaturePropertiesTest.java
-// http://www.facturae.gob.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf
-// http://www.etsi.org/deliver/etsi_ts%5C101900_101999%5C101903%5C01.04.02_60%5Cts_101903v010402p.pdf
-// http://geminisecurity.com/wp-content/uploads/tools/xades-overview.pdf
-public class CertificadoX509 {
+public class SignerProcessor implements Processor {
 	
-	//private static final String RUTA_CERTIFICADO ="src/main/resources/certificados/x509/x509-personal.crt";
-	//private static final String RUTA_LLAVE_PRIVADA_PKCS8 ="src/main/resources/certificados/x509/rsa-key-1.der";	
 	private static final String RUTA_PKCS12 ="src/main/resources/certificados/x509/persona_juridica_pruebas_vigente.p12";
-	private static final String DOCUMENTO_XML ="src/main/resources/documentos/libro1.xml";
 	private static final String PASSWORD = "persona_juridica_pruebas";
-	
-	
-	public static void main(String[] args) throws Exception {
+
+	@Override
+	public void process(Exchange exchange) throws Exception {
 		
-		/*
-		CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-	    FileInputStream fis = new FileInputStream ( RUTA_CERTIFICADO );
-	    X509Certificate x509 = (X509Certificate) certificateFactory.generateCertificate(fis);
-	    
-		// Obtención de llaves privada y publica	    
-	    byte[] keyBytes = Files.readAllBytes(Paths.get(RUTA_LLAVE_PRIVADA_PKCS8));
-	    PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
-	    KeyFactory keyfactory = KeyFactory.getInstance("RSA");
-	    PrivateKey privateKey = keyfactory.generatePrivate(spec);
-	    */
 		
+		File documentoXML = exchange.getIn().getBody(File.class);
+		System.out.println( documentoXML.getName() );		
+                	
 		InputStream stream = new FileInputStream(RUTA_PKCS12);		
 	    KeyStore p12 = KeyStore.getInstance("PKCS12");	    
 	    p12.load(stream, PASSWORD.toCharArray());	    
@@ -87,23 +73,6 @@ public class CertificadoX509 {
             System.out.println(k + " - " + value);
         }
         
-	    /*
-	    Enumeration<String> e = p12.aliases();	    
-	    while (e.hasMoreElements()) {
-            String alias = e.nextElement();
-            X509Certificate c = (X509Certificate) p12.getCertificate(alias);
-            Principal subject = c.getSubjectDN();
-            String subjectArray[] = subject.toString().split(",");
-            System.out.println("********** Alias: "+alias);
-            for (String s : subjectArray) {
-                String[] str = s.trim().split("=");
-                String key = str[0];
-                String value = str[1];
-                System.out.println(key + " - " + value);
-            }
-	    }
-        */
-		        
         System.out.println("\n********** Paso 3: Llave Pública **********");
         //https://stackoverflow.com/questions/20897065/how-to-get-exponent-and-modulus-value-of-rsa-public-key-from-pfx-file-pem-file-i
         
@@ -117,13 +86,14 @@ public class CertificadoX509 {
         
         System.out.println("\n********** Paso 4: Contexto de firma XML **********");
 	    XMLSignatureFactory signatureFactory = XMLSignatureFactory.getInstance("DOM");
-	    
+	    	    	    
 	    /*
 	     * Crear una referencia al documento.
 	     * En este caso se va a firmar el documento completo (URI = "")
 	     * Se especifica SHA1 como algoritmo de resumen y
 	     * como  transformacion "ENVELOPED" 
 	     */
+        
 	    Reference reference = signatureFactory.newReference
 	            ("",
 	             signatureFactory.newDigestMethod(DigestMethod.SHA1, null),
@@ -154,7 +124,7 @@ public class CertificadoX509 {
 	    // Crear contexto de firma	    
         DocumentBuilderFactory documentBuilder = DocumentBuilderFactory.newInstance();
         documentBuilder.setNamespaceAware(true);
-        Document xmlDocument = documentBuilder.newDocumentBuilder().parse(new FileInputStream( DOCUMENTO_XML ));
+        Document xmlDocument = documentBuilder.newDocumentBuilder().parse( documentoXML );
 	    		          
         DOMSignContext domSingContext = new DOMSignContext
         		(privateKey, xmlDocument.getDocumentElement() );
@@ -164,18 +134,17 @@ public class CertificadoX509 {
         XMLSignature signature = signatureFactory.newXMLSignature(signedInfo, keyInfo);        
         signature.sign(domSingContext);
         
-        // Mostrar salida
+        // Mostrar salida	    
         OutputStream os;
-        if (args.length >= 1) {
-           os = new FileOutputStream(args[0]);
-        } else {
-           os = System.out;
-        }
         
+        File respuesta = new File( documentoXML.getName() );      
+        os = new FileOutputStream( respuesta );
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.transform(new DOMSource(xmlDocument), new StreamResult(os));
-        
+		
+        exchange.getIn().setBody( respuesta );
+		
 	}
 
 }
