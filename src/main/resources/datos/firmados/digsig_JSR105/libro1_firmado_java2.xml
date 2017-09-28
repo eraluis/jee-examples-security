@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
+<nombre idioma="es">Rayuela</nombre>
+<autor>
+   <nombre>Julio</nombre>
+   <apellido>Cortazar</apellido>
+</autor>
+<extentiones>
+	<nota tipo="tipo_comentario_1">No leer en orden</nota>
+	<nota tipo="tipo_comentario_2">Leer antes de ir a Paris</nota>
+	<disponibles>12</disponibles>
+	<ext:version atr="atr_version">v3</ext:version>
+	<ext:nota atr="atr_comentario_extendido">Nota Extendida</ext:nota>
+	<ext:extentsion atr="atr_extension_1">Campo firma
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+				<Reference URI="">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>Dq6FRgrojfv9eyWAIAlCU+eoviY=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>iMa+BmUAb7tBJNKs8wy9I/vJK/VOSdFGhr31tyHhOn4BO6cXDB8OwA==</SignatureValue>
+			<KeyInfo>
+				<KeyValue>
+					<DSAKeyValue>
+						<P>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9xD7nN1kuFw==</P>
+						<Q>li7dzDacuo67Jg7mtqEm2TRuOMU=</Q>
+						<G>Z4Rxsnqc9E7pGknFFH2xqaryRPBaQ01khpMdLRQnG541Awtx/XPaF5Bpsy4pNWMOHCBiNU0NogpsQW5QvnlMpA==</G>
+						<Y>B35u+UTKUST4fAj/7w744SegS5sbnQLPhG1qvQ9Y974hFE8A30IoNaVKxPUhi8fl4ST5USc9JTnOQuWpEKv1Nw==</Y>
+					</DSAKeyValue>
+				</KeyValue>
+			</KeyInfo>
+		</Signature>
+	</ext:extentsion>
+	<ext:extentsion atr="atr_extension_2">Extension 2</ext:extentsion>
+</extentiones>
+</libro>

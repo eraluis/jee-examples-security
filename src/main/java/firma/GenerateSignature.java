@@ -1,0 +1,184 @@
+package firma;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.util.Collections;
+
+import javax.xml.crypto.dsig.CanonicalizationMethod;
+import javax.xml.crypto.dsig.DigestMethod;
+import javax.xml.crypto.dsig.Reference;
+import javax.xml.crypto.dsig.SignatureMethod;
+import javax.xml.crypto.dsig.SignedInfo;
+import javax.xml.crypto.dsig.Transform;
+import javax.xml.crypto.dsig.XMLSignature;
+import javax.xml.crypto.dsig.XMLSignatureFactory;
+import javax.xml.crypto.dsig.dom.DOMSignContext;
+import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
+import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
+import javax.xml.crypto.dsig.spec.TransformParameterSpec;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+
+/**
+ * This is a simple example of generating an Enveloped XML
+ * Signature using the JSR 105 API. The resulting signature will look
+ * like (key and signature values will be different):
+ *
+ * <pre><code>
+ *<Envelope xmlns="urn:envelope">
+ * <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+ *   <SignedInfo>
+ *     <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n
+-20010315"/>
+ *     <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+ *     <Reference URI="">
+ *       <Transforms>
+ *         <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+ *       </Transforms>
+ *       <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+ *       <DigestValue>K8M/lPbKnuMDsO0Uzuj75lQtzQI=<DigestValue>
+ *     </Reference>
+ *   </SignedInfo>
+ *   <SignatureValue>
+ *     DpEylhQoiUKBoKWmYfajXO7LZxiDYgVtUtCNyTgwZgoChzorA2nhkQ==
+ *   </SignatureValue>
+ *   <KeyInfo>
+ *     <KeyValue>
+ *       <DSAKeyValue>
+ *         <P>
+ *           rFto8uPQM6y34FLPmDh40BLJ1rVrC8VeRquuhPZ6jYNFkQuwxnu/wCvIAMhukPBL
+ *           FET8bJf/b2ef+oqxZajEb+88zlZoyG8g/wMfDBHTxz+CnowLahnCCTYBp5kt7G8q
+ *           UobJuvjylwj1st7V9Lsu03iXMXtbiriUjFa5gURasN8=
+ *         </P>
+ *         <Q>
+ *           kEjAFpCe4lcUOdwphpzf+tBaUds=
+ *         </Q>
+ *         <G>
+ *           oe14R2OtyKx+s+60O5BRNMOYpIg2TU/f15N3bsDErKOWtKXeNK9FS7dWStreDxo2
+ *           SSgOonqAd4FuJ/4uva7GgNL4ULIqY7E+mW5iwJ7n/WTELh98mEocsLXkNh24HcH4
+ *           BZfSCTruuzmCyjdV1KSqX/Eux04HfCWYmdxN3SQ/qqw=
+ *         </G>
+ *         <Y>
+ *           pA5NnZvcd574WRXuOA7ZfC/7Lqt4cB0MRLWtHubtJoVOao9ib5ry4rTk0r6ddnOv
+ *           AIGKktutzK3ymvKleS3DOrwZQgJ+/BDWDW8kO9R66o6rdjiSobBi/0c2V1+dkqOg
+ *           jFmKz395mvCOZGhC7fqAVhHat2EjGPMfgSZyABa7+1k=
+ *         </Y>
+ *       </DSAKeyValue>
+ *     </KeyValue>
+ *   </KeyInfo>
+ * </Signature>
+ *</Envelope>
+ * </code></pre>
+ */
+public class GenerateSignature {
+
+	private static String FOLDER = "src/main/resources/datos/";
+	private static String XML_DOCUMENT = "libro1";	
+	
+    //
+    // Synopsis: java GenEnveloped [document] [output]
+    //
+    //    where "document" is the name of a file containing the XML document
+    //    to be signed, and "output" is the name of the file to store the
+    //    signed document. The 2nd argument is optional - if not specified,
+    //    standard output will be used.
+    //
+    public static void main(String[] args) throws Exception {
+
+        // Create a DOM XMLSignatureFactory that will be used to generate the
+        // enveloped signature
+        XMLSignatureFactory signatureFactory = XMLSignatureFactory.getInstance("DOM");
+        
+        // Create a Reference to the enveloped document (in this case we are
+        // signing the whole document, so a URI of "" signifies that) and
+        // also specify the SHA1 digest algorithm and the ENVELOPED Transform.
+        Reference reference = signatureFactory.newReference
+            ("",
+             signatureFactory.newDigestMethod(DigestMethod.SHA1, null),
+             Collections.singletonList(
+            		  signatureFactory.newTransform(Transform.ENVELOPED, (TransformParameterSpec) null)
+            		  ),
+             null,
+             null);
+
+        // Create the SignedInfo
+        SignedInfo si = signatureFactory.newSignedInfo
+            (signatureFactory.newCanonicalizationMethod
+             (CanonicalizationMethod.INCLUSIVE_WITH_COMMENTS,
+              (C14NMethodParameterSpec) null),
+             signatureFactory.newSignatureMethod(SignatureMethod.DSA_SHA1, null),
+             Collections.singletonList(reference));
+
+        // Create a DSA KeyPair
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("DSA");
+        kpg.initialize(512);
+        KeyPair kp = kpg.generateKeyPair();
+
+        // Create a KeyValue containing the DSA PublicKey that was generated
+        KeyInfoFactory kif = signatureFactory.getKeyInfoFactory();
+        KeyValue kv = kif.newKeyValue(kp.getPublic());
+
+        // Create a KeyInfo and add the KeyValue to it
+        KeyInfo ki = kif.newKeyInfo(Collections.singletonList(kv));
+
+        // Instantiate the document to be signed
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setNamespaceAware(true);
+        Document document =
+            //dbf.newDocumentBuilder().parse(new FileInputStream(args[0]));
+        	  dbf.newDocumentBuilder().parse(new FileInputStream(FOLDER +"documentos/"+ XML_DOCUMENT +".xml"));
+        
+        ///***********************************************************************
+        NodeList notasSimples = document.getElementsByTagName("nota");
+        NodeList notasExtendidas = document.getElementsByTagNameNS("ns:libro:extension", "nota");
+        
+        System.out.println("****** Notas simples: "+ notasSimples.getLength()+" ******");          
+        for (int i=0; i < notasSimples.getLength(); i++){
+        	System.out.println("nota["+i+"].value: " +notasSimples.item(i).getTextContent() );
+            System.out.println("nota["+i+"].prefijo: " + notasSimples.item(i).getPrefix() );
+        }
+        
+        System.out.println("\n****** Notas extendidas: "+ notasExtendidas.getLength()+" ******");
+        for (int i=0; i < notasExtendidas.getLength(); i++){
+        	System.out.println("nota["+i+"].value: " +notasExtendidas.item(i).getTextContent() );
+            System.out.println("nota["+i+"].prefijo: " + notasExtendidas.item(i).getPrefix() );
+        }
+        
+        System.out.println("\n********** Firma **********\n***************************\n");
+        
+        ///***********************************************************************
+         
+        // Create a DOMSignContext and specify the DSA PrivateKey and
+        // location of the resulting XMLSignature's parent element
+        DOMSignContext dsc = new DOMSignContext
+            (kp.getPrivate(), document.getElementsByTagNameNS("ns:libro:extension", "extentsion").item(0) );        
+
+        // Create the XMLSignature (but don't sign it yet)
+        XMLSignature signature = signatureFactory.newXMLSignature(si, ki);
+
+        // Marshal, generate (and sign) the enveloped signature
+        signature.sign(dsc);
+
+        // output the resulting document
+        OutputStream os = System.out;
+        OutputStream os2 = new FileOutputStream(FOLDER + "firmados/digsig_JSR105/" + XML_DOCUMENT + "_firmado.xml");           
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer trans = tf.newTransformer();        
+        trans.transform(new DOMSource(document), new StreamResult(os));
+        trans.transform(new DOMSource(document), new StreamResult(os2));
+        os.close();
+        os2.close();
+    }
+}

@@ -14,7 +14,7 @@ public class CamelXMLDigSigner {
         	
         	@Override
             public void configure() {
-                from("file:src/main/resources/datos/documentos?noop=true").process(new SignerProcessor()).to("file:src/main/resources/datos/firmados/digsig");
+                from("file:src/main/resources/datos/documentos?noop=true").process(new SignerProcessor()).to("file:src/main/resources/datos/firmados/digsig_camel");
             }
         });
 
