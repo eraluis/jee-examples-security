@@ -1,4 +1,4 @@
-package certificados;
+package firmas;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +13,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.xmlsecurity.api.DefaultKeyAccessor;
 import org.apache.camel.component.xmlsecurity.api.XmlSignatureException;
 
-public class XAdESv2 {
+public class XAdES_Camel_v2 {
 	
 	private static final String RUTA_PKCS12 ="src/main/resources/certificados/x509/persona_juridica_pruebas_vigente.p12";
 	private static final String DOCUMENTO_XML ="src/main/resources/documentos/libro1.xml";

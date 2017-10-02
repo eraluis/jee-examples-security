@@ -11,7 +11,7 @@
 	<ext:version atr="atr_version">v3</ext:version>
 	<ext:nota atr="atr_comentario_extendido">Nota Extendida</ext:nota>
 	<ext:extentsion atr="atr_extension_1">Campo firma</ext:extentsion>
-	<ext:extentsion atr="atr_extension_2">Extension 2</ext:extentsion>
+	<ext:extentsion atr="atr_extension_2"></ext:extentsion>
 </extentiones>
 <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>Dq6FRgrojfv9eyWAIAlCU+eoviY=</DigestValue></Reference></SignedInfo><SignatureValue>A08twrb09X0LV0XamaPrg3rTocK7doTS/yG4Cv7T5aXb/QsMaS9Cs+r/ExoaOasEXTNYXNmit0Ao
 an0X6AUCtnpE9VLKHpUBCRhiLSNM68AXJkS2UCoSRpKbjSLk7GMYGdkO2wcfQerkzC6pAjox/NmG

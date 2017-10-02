@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
 <nombre idioma="es">Rayuela</nombre>
 <autor>
-   <nombre>Julio</nombre>
+   <nombre >Julio</nombre>
    <apellido>Cortazar</apellido>
 </autor>
 <extentiones>
-	<nota tipo="tipo_comentario_1">No leer en orden</nota>
-	<nota tipo="tipo_comentario_2">Leer antes de ir a Paris</nota>
+	<nota tipo="tipo_comentario_1" Id="nota2">No leer en orden</nota>
+	<nota tipo="tipo_comentario_2" Id="nota1">Leer antes de ir a Paris</nota>
 	<disponibles>12</disponibles>
 	<ext:version atr="atr_version">v3</ext:version>
 	<ext:nota atr="atr_comentario_extendido">Nota Extendida</ext:nota>
 	<ext:extentsion atr="atr_extension_1">Campo firma</ext:extentsion>
-	<ext:extentsion atr="atr_extension_2">Extension 2</ext:extentsion>
+	<ext:extentsion atr="atr_extension_2"></ext:extentsion>
 </extentiones>
 </libro>

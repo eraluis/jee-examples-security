@@ -1,4 +1,4 @@
-package certificados;
+package firmas;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -49,7 +49,7 @@ import org.w3c.dom.Document;
 // http://www.facturae.gob.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf
 // http://www.etsi.org/deliver/etsi_ts%5C101900_101999%5C101903%5C01.04.02_60%5Cts_101903v010402p.pdf
 // http://geminisecurity.com/wp-content/uploads/tools/xades-overview.pdf
-public class XAdES {
+public class XAdES_Camel_v1 {
 	
 	//private static final String RUTA_CERTIFICADO ="src/main/resources/certificados/x509/x509-personal.crt";
 	//private static final String RUTA_LLAVE_PRIVADA_PKCS8 ="src/main/resources/certificados/x509/rsa-key-1.der";	

@@ -1,44 +1,76 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
-	<nombre idioma="es">Rayuela</nombre>
-	<autor>
-		<nombre>Julio</nombre>
-		<apellido>Cortazar</apellido>
-	</autor>
-	<extentiones>
-		<ext:nota tipo="comentario">No leer en orden</ext:nota>
-	</extentiones>
-	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-		<SignedInfo>
-			<CanonicalizationMethod
-				Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments" />
-			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
-			<Reference URI="">
-				<Transforms>
-					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
-				</Transforms>
-				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-				<DigestValue>Ji+IxhylzWGZg2gD+jPFvTJlhFg=</DigestValue>
-			</Reference>
-		</SignedInfo>
-		<SignatureValue>lfHTgLfPDfGCYC3aPVpCDyERaq4zkPw4itavrDM8QEHAb5xEQDyQzU+PwUPW0lrYXWE7rhQY3SyF
-			3rvdXwMCXc4Ab+1VPCPvzLX/SPFjr0dUeuyuoRMn28HMc9W63ESngSelYkYnGuhnLUaT5y57Qm09
-			FdHzCy8Y5xvSRXFwDTYtc8U4VeEzEWmLnkNJeJsrEyTaWXk+9H+mvyxPhIL9mla1eTRojQ395IjN
-			/bj1wLz8GJYTxngMtZz5gjVQFSHQQYINHcdOFm39gKuc0Myo1MQBxfYeaWdSmoRylf7roS6jK9t1
-			QPRktbL1OVXhsTjw3kLNVfOl27aXmGEHfkxZ6Q==
-		</SignatureValue>
-		<KeyInfo>
-			<KeyValue>
-				<RSAKeyValue>
-					<Modulus>nvqj5+/ckOOa9rkkgzJ+LHDRswncJjoC6Q1fDaiPeseQd/JZ2GvcO8O3lV+Q2b4UZtw0B7pFx22H
-						PXoIVbWpGeDCo7FSA3O++QWxsD+gVXuCk1F6+qhf8ABLhkdzBHttas7hGqBZhM2Vw1h/aPV0Baup
-						x6NTmC1EK0O4xysszatKRz5KuafHG8OYl3BtwkZwK+wyHic4ywvbx6AOSJxefpUyOnA9Y5Fye2j6
-						8SuISpnLWYyPy5zGu6vCK7sZwXnIuuMbuV9SlTiIhceBAKsGaPtmkCUEBzs2z5iY/BLZrmfv+LpB
-						i2KoBKOPX+t5Ezo8FRkkHAeHovol2Qq7miVfIw==
-					</Modulus>
-					<Exponent>AQAB</Exponent>
-				</RSAKeyValue>
-			</KeyValue>
-		</KeyInfo>
-	</Signature>
-</libro>
+<?xml version="1.0" encoding="UTF-8"?><libro xmlns="ns:libro" xmlns:ext="ns:libro:extension">
+<nombre idioma="es">Rayuela</nombre>
+<autor>
+   <nombre>Julio</nombre>
+   <apellido>Cortazar</apellido>
+</autor>
+<extentiones>
+	<nota tipo="tipo_comentario_1">No leer en orden</nota>
+	<nota tipo="tipo_comentario_2">Leer antes de ir a Paris</nota>
+	<disponibles>12</disponibles>
+	<ext:version atr="atr_version">v3</ext:version>
+	<ext:nota atr="atr_comentario_extendido">Nota Extendida</ext:nota>
+	<ext:extentsion atr="atr_extension_1">Campo firma</ext:extentsion>
+	<ext:extentsion atr="atr_extension_2">Extension 2</ext:extentsion>
+</extentiones>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+	<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+	<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+	<Reference URI="">
+	<Transforms>
+		<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms>
+		<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+		<DigestValue>Dq6FRgrojfv9eyWAIAlCU+eoviY=</DigestValue>
+	</Reference>
+	</SignedInfo>
+		<SignatureValue>A08twrb09X0LV0XamaPrg3rTocK7doTS/yG4Cv7T5aXb/QsMaS9Cs+r/ExoaOasEXTNYXNmit0Ao
+an0X6AUCtnpE9VLKHpUBCRhiLSNM68AXJkS2UCoSRpKbjSLk7GMYGdkO2wcfQerkzC6pAjox/NmG
+TGZXtAMbHF8E1mzOvpnXLuNQj//m7WsxovIDl1SOrISB9qu8YC8NTwHl9NAdv/+52yjiScbnqv/I
+XPE6XAMfn4mffA6Zkm6PMgOVZg0t6GrKYgnJ9SfJ4fHwZCXmMYfB7uB3PQAM4mPXTeuHF/hgCfbi
+if3xuyxWqCXJa70SSmWb0X+9zLVP/RkTmQm91g==</SignatureValue>
+	<KeyInfo>
+	<X509Data>
+	<X509Certificate>
+MIIIoTCCBomgAwIBAgIIW6qCaBJlC8wwDQYJKoZIhvcNAQELBQAwgbQxIzAhBgkqhkiG9w0BCQEW
+FGluZm9AYW5kZXNzY2QuY29tLmNvMSMwIQYDVQQDExpDQSBBTkRFUyBTQ0QgUy5BLiBDbGFzZSBJ
+STEwMC4GA1UECxMnRGl2aXNpb24gZGUgY2VydGlmaWNhY2lvbiBlbnRpZGFkIGZpbmFsMRMwEQYD
+VQQKEwpBbmRlcyBTQ0QuMRQwEgYDVQQHEwtCb2dvdGEgRC5DLjELMAkGA1UEBhMCQ08wHhcNMTYw
+OTI0MTczNTAzWhcNMTkwOTI0MTczNTAzWjCCAUExHTAbBgNVBAkTFENhbGxlIEZhbHNhIE5vIDEy
+IDM0MT4wPAYJKoZIhvcNAQkBFi9wZXJzb25hX2p1cmlkaWNhX3BydWViYXNAZW1wcmVzYXBhcmFw
+cnVlYmFzLmNvbTEbMBkGA1UEAxMSVXN1YXJpbyBkZSBQcnVlYmFzMREwDwYDVQQFEwgxMTExMTEx
+MTEZMBcGA1UEDBMQUGVyc29uYSBKdXJpZGljYTFgMF4GA1UECxNXQ2VydGlmaWNhZG8gZGUgUGVy
+c29uYSBKdXJpZGljYSBlbWl0aWRvIHBvciBBbmRlcyBTQ0QgQXYuIENhcnJlcmEgNDUgTm8gMTAz
+IC0gMzQgT0YgMjA1MQ8wDQYDVQQHEwZCb2dvdGExFTATBgNVBAgTDEN1bmRpbmFtYXJjYTELMAkG
+A1UEBhMCQ08wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCe+qPn79yQ45r2uSSDMn4s
+cNGzCdwmOgLpDV8NqI96x5B38lnYa9w7w7eVX5DZvhRm3DQHukXHbYc9eghVtakZ4MKjsVIDc775
+BbGwP6BVe4KTUXr6qF/wAEuGR3MEe21qzuEaoFmEzZXDWH9o9XQFq6nHo1OYLUQrQ7jHKyzNq0pH
+Pkq5p8cbw5iXcG3CRnAr7DIeJzjLC9vHoA5InF5+lTI6cD1jkXJ7aPrxK4hKmctZjI/LnMa7q8Ir
+uxnBeci64xu5X1KVOIiFx4EAqwZo+2aQJQQHOzbPmJj8EtmuZ+/4ukGLYqgEo49f63kTOjwVGSQc
+B4ei+iXZCruaJV8jAgMBAAGjggMlMIIDITA3BggrBgEFBQcBAQQrMCkwJwYIKwYBBQUHMAGGG2h0
+dHA6Ly9vY3NwLmFuZGVzc2NkLmNvbS5jbzAdBgNVHQ4EFgQUbp89+LkPGuGx/opVG6EamsmLnxcw
+DAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBSoS7T0C6e2W9SgKIUQnQQTM8Sn9zCCAeMGA1UdIASC
+AdowggHWMIIB0gYNKwYBBAGB9EgBAgkCAjCCAb8wggF4BggrBgEFBQcCAjCCAWoeggFmAEwAYQAg
+AHUAdABpAGwAaQB6AGEAYwBpAPMAbgAgAGQAZQAgAGUAcwB0AGUAIABjAGUAcgB0AGkAZgBpAGMA
+YQBkAG8AIABlAHMAdADhACAAcwB1AGoAZQB0AGEAIABhACAAbABhAHMAIABQAG8AbADtAHQAaQBj
+AGEAcwAgAGQAZQAgAEMAZQByAHQAaQBmAGkAYwBhAGQAbwAgAGQAZQAgAFAAZQByAHMAbwBuAGEA
+IABKAHUAcgDtAGQAaQBjAGEAIAAoAFAAQwApACAAeQAgAEQAZQBjAGwAYQByAGEAYwBpAPMAbgAg
+AGQAZQAgAFAAcgDhAGMAdABpAGMAYQBzACAAZABlACAAQwBlAHIAdABpAGYAaQBjAGEAYwBpAPMA
+bgAgACgARABQAEMAKQAgAGUAcwB0AGEAYgBsAGUAYwBpAGQAYQBzACAAcABvAHIAIABBAG4AZABl
+AHMAIABTAEMARDBBBggrBgEFBQcCARY1aHR0cDovL3d3dy5hbmRlc3NjZC5jb20uY28vZG9jcy9E
+UENfQW5kZXNTQ0RfVjIuMi5wZGYwRgYDVR0fBD8wPTA7oDmgN4Y1aHR0cDovL3d3dy5hbmRlc3Nj
+ZC5jb20uY28vaW5jbHVkZXMvZ2V0Q2VydC5waHA/Y3JsPTEwDgYDVR0PAQH/BAQDAgXgMB0GA1Ud
+JQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDA6BgNVHREEMzAxgS9wZXJzb25hX2p1cmlkaWNhX3By
+dWViYXNAZW1wcmVzYXBhcmFwcnVlYmFzLmNvbTANBgkqhkiG9w0BAQsFAAOCAgEAkjyFBKltp8DL
+k35/n8mvBPNxciuUUHj/EzEnzOoYaWAcFLOSGA71Z7VwrldyVImQnsREWpbsMblIY5NI7OLztzMS
+CMpWeXR/g8H5HcQu6CUroQqRPiOOfEgyCAFVPHGKHY7e8zzoNzqeSZ3fxGPF6sXhN0BxpEmqlB/+
+HM4SdQchqyRqqEMX86FlnxS2J4trgLvrQeSFEzb/PJNI578hr31LeFn93GPEYPhK7cxZeDFgNTgf
+Bm2gSwaYrjE8JV9aG29G+XZuviXfRQifNcwRCPZF2Tj4MWUqsX9apdxlodBJjnqTnwK5c4UBzYuN
+BJcrNVdwLdAvuGgWotrxGLfaoJYXunms2bCx3oqw0/kEiNgM+E6sualeojUztiWG/dz/nBsFD2jx
+Rfoah/V8jnGLG0hJhhvadd3iRZ/CliBFazk1HrSUISUvblGkVvZx3ChTM3qZCIa/cK2tpeLTRkmo
+eTR22DfXj44uNc/9RS1BQyv4TI/m/3miHRO3AEFwXgwsnIkRrZYiZQd6qezQfqLQGw8cod6/gxkE
+Ni86lOlPkOuB4MoFdQI5HUZQbsVQIY33rHpbFiyIquWZUNLYryfSGD2cLc2WdW8hxwU/keTwrDW4
+0YO/3zbwYfOqpWvYJw535X7Hcw/lBo49ZJxwy+TvzazO4eA7QrfqF5fVQzL/v24=</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature></libro>
